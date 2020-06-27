@@ -20,7 +20,7 @@ if __name__ == '__main__':
     spark = SparkSession.builder.appName('DataAnalysis').getOrCreate()
     print('Session created')
 
-    hr_data = spark.read.csv('C:\spark-3.0.0-preview2-bin-hadoop2.7\pyspark-tutorial-master\HR_comma_sep.csv',header=True)
+    hr_data = spark.read.csv('HR_comma_sep.csv',header=True)
  
     hr_data = hr_data.withColumnRenamed("sales","department")
     
@@ -33,4 +33,4 @@ if __name__ == '__main__':
     #find count of hardworking and less paid folks
     print ('Count of hardworking & Less Paid folks ',count)
     #store output in local folder
-    hr_data.write.format('csv').option('header',True).mode('overwrite').option('sep',',').save('file:\spark-3.0.0-preview2-bin-hadoop2.7\pyspark-tutorial-master\hr_output.csv')
+    hr_data.write.format('csv').option('header',True).mode('overwrite').option('sep',',').save('file:hr_output.csv')
